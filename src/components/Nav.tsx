@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import logo from "../assets/images/logo.svg";
 import { Menu, X } from "lucide-react";
 
 function Nav() {
+
   const [open, setOpen] = useState(false);
+    useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+
 
   const Icon = open ? X : Menu;
 
